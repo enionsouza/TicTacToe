@@ -17,11 +17,11 @@ class Game
   end
 
   def winner?
-    puts "TicTacToe Game Class"
+    puts 'TicTacToe Game Class'
   end
 
   def cats_game?
-    puts "TicTacToe Game Class"
+    puts 'TicTacToe Game Class'
   end
 end
 
@@ -84,6 +84,7 @@ loop do
   print_board(match.board, match.victory)
   print "#{game_players.name1}, please, choose one of the available numbers to play: "
   next unless match.mark?(gets.chomp.to_i)
+
   if match.winner?
     print_board(match.board, match.victory)
     puts "#{game_players.name1} wins!!!".green.on_black
