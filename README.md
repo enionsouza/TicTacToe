@@ -1,6 +1,7 @@
 # TicTacToe
 
-Project setup was performed as described in requirements.
+- Milestone 1: Project setup was performed as described in the requirements.
+- Milestone 2: We created the user interface on `bin/main.rb` file for the TicTacToe Game project.
 
 ## Built With
 
