@@ -61,7 +61,7 @@ def puts_color(str)
   puts str.light_white.on_black
 end
 
-def print_color(str, green = false)
+def print_color(str, green = nil)
   str = str.to_s
   green ? (print str.light_green.on_black) : (print str.light_white.on_black)
 end
