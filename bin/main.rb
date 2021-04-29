@@ -6,33 +6,67 @@ class Game
   # Class to be implemented inside TicTacToe Module
   attr_reader :board, :victory
 
-  def initialize(game_players)
+  def initialize
     @board = (1..9).to_a
     @victory = Array.new(9, false)
-    puts "TicTacToe Game Class #{game_players}"
   end
 
-  def mark?(number)
-    puts "TicTacToe Game Class #{number}"
+  def mark?(number, symbol)
+    return false if number < 1 || number > 9 || number != @board[number - 1]
+
+    @board[number - 1] = symbol
+    true
+  end
+
+  def check_for_rows?
+    (1..9).step(3).each do |i|
+      if @board[i - 1] == @board[i] && @board[i] == @board[i + 1]
+        return @victory[i - 1] = @victory[i] = @victory[i + 1] = true
+      end
+    end
+    false
+  end
+
+  def check_for_columns?
+    (3..5).each do |i|
+      if @board[i - 3] == @board[i] && @board[i] == @board[i + 3]
+        return @victory[i - 3] = @victory[i] = @victory[i + 3] = true
+      end
+    end
+    false
+  end
+
+  def check_for_main_diagonal?
+    @victory[0] = @victory[4] = @victory[8] = true if @board[0] == @board[4] && @board[4] == @board[8]
+  end
+
+  def check_for_secondary_diagonal?
+    @victory[2] = @victory[4] = @victory[6] = true if @board[2] == @board[4] && @board[4] == @board[6]
   end
 
   def winner?
-    puts 'TicTacToe Game Class'
+    result = false
+    result ||= check_for_rows?
+    result ||= check_for_columns?
+    result ||= check_for_main_diagonal?
+    result ||= check_for_secondary_diagonal?
+    result
   end
 
   def cats_game?
-    puts 'TicTacToe Game Class'
+    @board.all?(String)
   end
 end
 
 class Players
   # To be implemented inside TicTacToe Module
-  attr_reader :name1, :name2
+  attr_reader :match_players
 
   def initialize(name1, name2)
-    @name1 = name1
-    @name2 = name2
-    puts "TicTacToe Players Class #{@name1} and #{@name2}"
+    @match_players = [
+      { name: name1, symbol: 'X' },
+      { name: name2, symbol: 'O' }
+    ]
   end
 end
 
@@ -78,16 +112,23 @@ name2 = name2 == '' ? 'Player2' : name2
 
 game_players = Players.new(name1, name2)
 
-match = Game.new(game_players)
+match = Game.new
 player = 0
+error = false
 loop do
   print_board(match.board, match.victory)
-  print "#{game_players.name1}, please, choose one of the available numbers to play: "
-  next unless match.mark?(gets.chomp.to_i)
+  puts 'Invalid number!'.red.on_black if error
+  print "#{game_players.match_players[player][:name]}, please, choose one of the available numbers to play: "
+  if match.mark?(gets.chomp.to_i, game_players.match_players[player][:symbol])
+    error = false
+  else
+    error = true
+    next
+  end
 
   if match.winner?
     print_board(match.board, match.victory)
-    puts "#{game_players.name1} wins!!!".green.on_black
+    puts "#{game_players.match_players[player][:name]} wins!!!".green.on_black
     break
   end
   if match.cats_game?
