@@ -2,6 +2,7 @@
 
 - Milestone 1: Project setup was performed as described in the requirements.
 - Milestone 2: We created the user interface on `bin/main.rb` file for the TicTacToe Game project.
+- Milestone 3: We added the game logic in the file `lib/tic_tac_toe.rb`.
 
 ## Built With
 
@@ -35,8 +36,8 @@ How to access our project:
 👤 Chibuike Uzoechina (Original Project)
 
 - GitHub: [@Chike1990](https://github.com/Chike1990)
-- Twitter: [@ChibuikeUzoechi]()
-- LinkedIn: [@Chibuike-Uzoechina]()
+- Twitter: [@ChibuikeUzoechi](https://twitter.com/ChibuikeUzoechi)
+- LinkedIn: [@Chibuike-Uzoechina](https://www.linkedin.com/in/chibuike-uzoechina-630857102)
 
 ## 🤝 Contributing
 
