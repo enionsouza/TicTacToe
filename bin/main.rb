@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 require 'colorize'
-require_relative '../lib/tic_tac_toe'
+require_relative '../lib/tictactoe'
+require_relative '../lib/players'
 
 def clear_screen
   system('cls') || system('clear')
