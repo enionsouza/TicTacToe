@@ -119,12 +119,8 @@ loop do
   print_board(match.board, match.victory)
   puts 'Invalid number!'.red.on_black if error
   print "#{game_players.match_players[player][:name]}, please, choose one of the available numbers to play: "
-  if match.mark?(gets.chomp.to_i, game_players.match_players[player][:symbol])
-    error = false
-  else
-    error = true
-    next
-  end
+  error = !match.mark?(gets.chomp.to_i, game_players.match_players[player][:symbol])
+  next if error
 
   if match.winner?
     print_board(match.board, match.victory)
