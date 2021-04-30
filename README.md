@@ -1,8 +1,14 @@
-# TicTacToe
+# The TicTacToe Game
+
+Tic-tac-toe (American English), noughts and crosses (Commonwealth English and British English), or Xs and Os/“X’y O’sies” (Ireland), is a paper-and-pencil game for two players, X and O, who take turns marking the spaces in a 3×3 grid. The player who succeeds in placing three of their marks in a diagonal, horizontal, or vertical row is the winner. It is a solved game with a forced draw assuming best play from both players.
+![Screenshot](img\Tic-tac-toe-game-1.svg.png)
+# Development Milestones
 
 - Milestone 1: Project setup was performed as described in the requirements.
 - Milestone 2: We created the user interface on `bin/main.rb` file for the TicTacToe Game project.
 - Milestone 3: We added the game logic in the file `lib/tic_tac_toe.rb`.
+- Milestone 4: We added instructions for players to enable them to understand and play the game successfully.
+
 
 ## Built With
 
@@ -13,18 +19,31 @@
 ### Prerequisites
 
 - Terminal (Bash)
-- Linter tests
 - Git
-- Ruby
+- Ruby (with colorize gem)
 
-### Setup
-
-How to access our project:
+### Setup: How to start the TicTacToe game
 
 - clone our repo: `git clone git@github.com:enionsouza/TicTacToe.git`
-- cd into: `cd TicTacToe`
-- run `ruby bin/main.rb`
+- cd into: `cd TicTacToe/bin`
+- run `./main.rb`
 
+### How to play the game:
+
+The above command should open the game interface.
+- The first player should enter their name
+- Thereafter, the second should enter their name, too.
+![Screenshot](img/Screenshot_00.png)
+
+- Then both players should take turns choosing one of the available numbers shown on the screen.
+![Screenshot](img/Screenshot_01.png)
+
+- The app will reject an invalid number and require the player to enter another number from the remaining numbers.
+![Screenshot](img/Screenshot_04.png)
+
+- The player who succeeds in placing three of their marks in a diagonal, horizontal, or vertical row is the winner. However, if there are no remaining numbers to choose and no winner, then it's a tie (a draw game) also called *Cats Game* in TicTacToe.
+![Screenshot](img/Screenshot_02.png)
+![Screenshot](img/Screenshot_03.png)
 ## Authors
 
 👤 Enio Neves de Souza
