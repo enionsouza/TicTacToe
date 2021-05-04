@@ -1,3 +1,5 @@
+# rubocop:disable Metrics/BlockLength
+
 require_relative '../lib/tictactoe'
 
 RSpec.describe Game do
@@ -153,3 +155,5 @@ RSpec.describe Game do
     end
   end
 end
+
+# rubocop:enable Metrics/BlockLength
