@@ -24,7 +24,7 @@ RSpec.describe Game do
       game = Game.new
       game.board[0] = 'X'
       game.board[1] = game.board[2] = 'O'
-      expect(game.check_for_rows?).to eql(false)
+      expect(game.check_for_rows?).to eql(false || nil)
     end
   end
 
@@ -39,7 +39,22 @@ RSpec.describe Game do
       game = Game.new
       game.board[1] = 'X'
       game.board[4] = game.board[7] = 'O'
-      expect(game.check_for_columns?).to eql(false)
+      expect(game.check_for_columns?).to eql(false || nil)
+    end
+  end
+
+  describe "#check_for_main_diagonal?" do
+    it "checks if #check_for_main_diagonal? is correctly checking if the main diagonal is a winner" do
+      game = Game.new
+      game.board[0] = game.board[4] = game.board[8] = 'X'
+      expect(game.check_for_main_diagonal?).to eql(true)
+    end
+
+    it "checks if #check_for_main_diagonal? is correctly checking if the main diagonal is a winner" do
+      game = Game.new
+      game.board[0] = 'X'
+      game.board[4] = game.board[8] = 'O'
+      expect(game.check_for_main_diagonal?).to eql(false || nil)
     end
   end
 end
