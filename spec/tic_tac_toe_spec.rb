@@ -1,26 +1,26 @@
 require_relative '../lib/tictactoe'
 
 RSpec.describe Game do
-  describe "#mark?" do
-    it "checks if #mark? is correctly marking the board" do
+  describe '#mark?' do
+    it 'checks if #mark? is correctly marking the board' do
       game = Game.new
       expect(game.mark?(5, 'X')).to eql(true)
     end
 
-    it "checks if #mark? is returning false for invalid input" do
+    it 'checks if #mark? is returning false for invalid input' do
       game = Game.new
       expect(game.mark?('five'.to_i, 'X')).to eql(false)
     end
   end
 
-  describe "#check_for_rows?" do
-    it "checks if #check_for_rows? is correctly checking if the first row is a winner" do
+  describe '#check_for_rows?' do
+    it 'checks if #check_for_rows? is correctly checking if the first row is a winner' do
       game = Game.new
       game.board[0] = game.board[1] = game.board[2] = 'X'
       expect(game.check_for_rows?).to eql(true)
     end
 
-    it "checks if #check_for_rows? is correctly checking if the first row is a winner" do
+    it 'checks if #check_for_rows? is correctly checking if the first row is a winner' do
       game = Game.new
       game.board[0] = 'X'
       game.board[1] = game.board[2] = 'O'
@@ -28,14 +28,14 @@ RSpec.describe Game do
     end
   end
 
-  describe "#check_for_columns?" do
-    it "checks if #check_for_columns? is correctly checking if the second column is a winner" do
+  describe '#check_for_columns?' do
+    it 'checks if #check_for_columns? is correctly checking if the second column is a winner' do
       game = Game.new
       game.board[1] = game.board[4] = game.board[7] = 'X'
       expect(game.check_for_columns?).to eql(true)
     end
 
-    it "checks if #check_for_columns? is correctly checking if the second column is a winner" do
+    it 'checks if #check_for_columns? is correctly checking if the second column is a winner' do
       game = Game.new
       game.board[1] = 'X'
       game.board[4] = game.board[7] = 'O'
@@ -43,14 +43,14 @@ RSpec.describe Game do
     end
   end
 
-  describe "#check_for_main_diagonal?" do
-    it "checks if #check_for_main_diagonal? is correctly checking if the main diagonal is a winner" do
+  describe '#check_for_main_diagonal?' do
+    it 'checks if #check_for_main_diagonal? is correctly checking if the main diagonal is a winner' do
       game = Game.new
       game.board[0] = game.board[4] = game.board[8] = 'X'
       expect(game.check_for_main_diagonal?).to eql(true)
     end
 
-    it "checks if #check_for_main_diagonal? is correctly checking if the main diagonal is a winner" do
+    it 'checks if #check_for_main_diagonal? is correctly checking if the main diagonal is a winner' do
       game = Game.new
       game.board[0] = 'X'
       game.board[4] = game.board[8] = 'O'
@@ -58,14 +58,14 @@ RSpec.describe Game do
     end
   end
 
-  describe "#check_for_secondary_diagonal?" do
-    it "checks if #check_for_secondary_diagonal? is correctly checking if the secondary diagonal is a winner" do
+  describe '#check_for_secondary_diagonal?' do
+    it 'checks if #check_for_secondary_diagonal? is correctly checking if the secondary diagonal is a winner' do
       game = Game.new
       game.board[2] = game.board[4] = game.board[6] = 'X'
       expect(game.check_for_secondary_diagonal?).to eql(true)
     end
 
-    it "checks if #check_for_secondary_diagonal? is correctly checking if the secondary diagonal is a winner" do
+    it 'checks if #check_for_secondary_diagonal? is correctly checking if the secondary diagonal is a winner' do
       game = Game.new
       game.board[2] = 'X'
       game.board[4] = game.board[6] = 'O'
@@ -73,14 +73,14 @@ RSpec.describe Game do
     end
   end
 
-  describe "#winner?" do
-    it "checks if #winner? is correctly checking if one row, or one column or the main diagonal is a winner" do
+  describe '#winner?' do
+    it 'checks if #winner? is correctly checking if one row, or one column or the main diagonal is a winner' do
       game = Game.new
       game.board[6] = game.board[7] = game.board[8] = 'X'
       expect(game.winner?).to eql(true)
     end
 
-    it "checks if #winner? is correctly checking if the third column is a winner" do
+    it 'checks if #winner? is correctly checking if the third column is a winner' do
       game = Game.new
       game.board[6] = 'X'
       game.board[7] = game.board[8] = 'O'
@@ -88,14 +88,14 @@ RSpec.describe Game do
     end
   end
 
-  describe "#cats_game?" do
-    it "checks if #cats_game? is correctly evaluating a draw match" do
+  describe '#cats_game?' do
+    it 'checks if #cats_game? is correctly evaluating a draw match' do
       game = Game.new
-      game.board = ['X', 'O', 'X', 'O', 'O', 'X', 'X', 'X', 'O']
+      game.board = %w[X O X O O X X X O]
       expect(game.cats_game?).to eql(true)
     end
 
-    it "checks if #cats_game? is correctly evaluating a draw match" do
+    it 'checks if #cats_game? is correctly evaluating a draw match' do
       game = Game.new
       game.board = [1, 'O', 'X', 'O', 'O', 'X', 'X', 'X', 'O']
       expect(game.cats_game?).to eql(false)
