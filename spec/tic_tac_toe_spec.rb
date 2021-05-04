@@ -72,4 +72,33 @@ RSpec.describe Game do
       expect(game.check_for_secondary_diagonal?).to eql(false || nil)
     end
   end
+
+  describe "#winner?" do
+    it "checks if #winner? is correctly checking if one row, or one column or the main diagonal is a winner" do
+      game = Game.new
+      game.board[6] = game.board[7] = game.board[8] = 'X'
+      expect(game.winner?).to eql(true)
+    end
+
+    it "checks if #winner? is correctly checking if the third column is a winner" do
+      game = Game.new
+      game.board[6] = 'X'
+      game.board[7] = game.board[8] = 'O'
+      expect(game.winner?).to eql(false || nil)
+    end
+  end
+
+  describe "#cats_game?" do
+    it "checks if #cats_game? is correctly evaluating a draw match" do
+      game = Game.new
+      game.board = ['X', 'O', 'X', 'O', 'O', 'X', 'X', 'X', 'O']
+      expect(game.cats_game?).to eql(true)
+    end
+
+    it "checks if #cats_game? is correctly evaluating a draw match" do
+      game = Game.new
+      game.board = [1, 'O', 'X', 'O', 'O', 'X', 'X', 'X', 'O']
+      expect(game.cats_game?).to eql(false)
+    end
+  end
 end
