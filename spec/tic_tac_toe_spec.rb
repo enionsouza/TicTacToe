@@ -27,4 +27,19 @@ RSpec.describe Game do
       expect(game.check_for_rows?).to eql(false)
     end
   end
+
+  describe "#check_for_columns?" do
+    it "checks if #check_for_columns? is correctly checking if the second column is a winner" do
+      game = Game.new
+      game.board[1] = game.board[4] = game.board[7] = 'X'
+      expect(game.check_for_columns?).to eql(true)
+    end
+
+    it "checks if #check_for_columns? is correctly checking if the second column is a winner" do
+      game = Game.new
+      game.board[1] = 'X'
+      game.board[4] = game.board[7] = 'O'
+      expect(game.check_for_columns?).to eql(false)
+    end
+  end
 end
