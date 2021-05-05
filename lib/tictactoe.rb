@@ -1,5 +1,5 @@
 class Game
-  attr_accessor :board, :victory
+  attr_reader :board, :victory
 
   def initialize
     @board = (1..9).to_a
